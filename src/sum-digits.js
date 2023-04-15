@@ -14,15 +14,18 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 function getSumOfDigits(n) {
 
-  let sum = n.toString().split('').reduce((total, item) => total + item)
+  while (n.toString().length>1) {
+    n=n.toString().split('').map(x=>x=+x).reduce((total, item) => total + item);
+  }
 
-  if (sum.toString().length<=1) {
-    return sum;
-  } else return getSumOfDigits(sum);
-  
+  return n;
+
 }
 
 
 module.exports = {
   getSumOfDigits
 };
+
+// $ npx mocha test/sum-digits.test
+
