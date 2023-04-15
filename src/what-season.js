@@ -19,3 +19,6 @@ function getSeason(/* date */) {
 module.exports = {
   getSeason
 };
+
+
+// Попробуй через try catch проверять так date.toLocaleString(), и если в catch придет ошибка, то соответственно, прокинуть её (if (e) throw new Error("Invalid date!");)

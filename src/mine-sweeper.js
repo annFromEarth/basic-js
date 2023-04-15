@@ -23,9 +23,80 @@ const { NotImplementedError } = require('../extensions/index.js');
  *  [1, 1, 1]
  * ]
  */
-function minesweeper(/* matrix */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function minesweeper(matrix) {
+  for (let i=0; i< matrix.length; i++) {
+    for (let j=0; j< matrix[i].length; j++) {
+      let counter=0;
+      function count(x) {
+        if (x==true) {counter++};  
+      }
+
+      if (i=0) {
+
+        if(j=0){
+          count(matrix[i][j+1]);
+          count(matrix[i+1][j]);
+          count(matrix[i+1][j+1]);
+        }else if(j=matrix[i].length-1) {
+          count(matrix[i][j-1]);
+          count(matrix[i+1][j-1]);
+          count(matrix[i+1][j]);
+        }else{
+          count(matrix[i][j-1]);
+          count(matrix[i][j+1]);
+          count(matrix[i+1][j-1]);
+          count(matrix[i+1][j]);
+          count(matrix[i+1][j+1]);
+        }
+
+      }else if(i=matrix.length-1){
+
+        if(j=0){
+          count(matrix[i-1][j]);
+          count(matrix[i-1][j+1]);
+          count(matrix[i][j+1]);
+        }else if(j=matrix[i].length-1) {
+          count(matrix[i][j-1]);
+          count(matrix[i-1][j-1]);
+          count(matrix[i-1][j]);
+        }else{
+          count(matrix[i][j-1]);
+          count(matrix[i-1][j-1]);
+          count(matrix[i-1][j]);
+          count(matrix[i-1][j+1]);
+          count(matrix[i][j+1]);
+        }
+        
+      }else {
+        if(j=0){
+         
+          count(matrix[i-1][j]);
+          count(matrix[i-1][j+1]);
+          count(matrix[i][j+1]);
+          count(matrix[i+1][j]);
+          count(matrix[i+1][j+1]);
+        }else if(j=matrix[i].length-1) {
+          count(matrix[i-1][j-1]);
+          count(matrix[i-1][j]);
+          count(matrix[i][j-1]);
+          count(matrix[i+1][j-1]);
+          count(matrix[i+1][j]);
+        }else{
+          count(matrix[i-1][j-1]);
+          count(matrix[i-1][j]);
+          count(matrix[i-1][j+1]);
+          count(matrix[i][j-1]);
+          count(matrix[i][j+1]);
+          count(matrix[i+1][j-1]);
+          count(matrix[i+1][j]);
+          count(matrix[i+1][j+1]);
+        }
+      }
+
+      matrix[i][j]=counter;
+    }
+  }
+  return matrix;
 }
 
 module.exports = {
