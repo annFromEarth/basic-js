@@ -19,29 +19,25 @@ class DepthCalculator {
 
   calculateDepth(arr) {
 
-    console.dir(arr)
+    // console.dir(arr)
 
-    let counter=0;
-    function countLevels(x){
-      
-      if(!Array.isArray(x)) {
-        return counter;
-      } else {
-        counter++;
-        for (let i=0;i<x.length; i++){
-        countLevels(x[i])
+    let counter = 1;
+
+    for(let subarray of arr) {
+
+      let local_depth=1;
+
+      if (Array.isArray(subarray)) {
+        local_depth = local_depth + this.calculateDepth(subarray);
       }
-    }
+
+      if (local_depth > counter) {
+        counter = local_depth;
+      }
 
     }
 
-    countLevels(arr);
     return counter;
-
-
-    // const getArrayDepth = value => Array.isArray(value) ?
-    // 1 + Math.max(0, ...value.map(getArrayDepth)) :
-    // 0;
 
   }
 }
