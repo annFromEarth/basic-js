@@ -12,12 +12,8 @@ const { NotImplementedError } = require('../extensions/index.js');
  * 
  */
 function getSeason(date) {
-  if (arguments.length === 0) return 'Unable to determine the time of year!'
-  if (typeof date !== 'object' || Object.getOwnPropertyNames(date).length !== 0) throw new Error('Invalid date!')
-
-  // if (!date) {return 'Unable to determine the time of year!'};
-  // if (typeof date !== 'object') {throw new Error("Invalid date!")};
-  // if (date.hasOwnProperty('toString')) {throw new Error("Invalid date!")}
+  if (!date) {return 'Unable to determine the time of year!'};
+  if (typeof date !== 'object' || Object.getOwnPropertyNames(date).length !== 0) {throw new Error('Invalid date!')}
   
   let spring = [2,3,4];
   let summer = [5,6,7];
