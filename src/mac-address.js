@@ -17,6 +17,8 @@ const { NotImplementedError } = require('../extensions/index.js');
 function isMAC48Address(n) {
   arr=n.split('-').map(x=> parseInt(x,16));
 
+  if (arr.length !== 6) return false;
+
   if(arr.includes(NaN)) return false;
   else return true
 }
